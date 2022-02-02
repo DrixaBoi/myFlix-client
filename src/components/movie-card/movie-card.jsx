@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
+import './movie-card.scss';
+
 export class MovieCard extends React.Component {
 
   render() {
@@ -16,7 +18,7 @@ export class MovieCard extends React.Component {
           <Card.Text>{movie.Description}</Card.Text>
           <Button onClick={() => onMovieClick(movie)} variant="link">Open</Button>
         </Card.Body>
-      </Card>    
+      </Card>
     );
   }
 }
