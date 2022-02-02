@@ -31,7 +31,7 @@ export class MainView extends React.Component {
 
   setSelectedMovie(newSelectedMovie) {
     this.setState({
-      selectedMovie: movie
+      selectedMovie: newSelectedMovie,
     });
   }
 
