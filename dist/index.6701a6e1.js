@@ -22841,16 +22841,14 @@ class MainView extends _reactDefault.default.Component {
                         __self: this
                     })
                 })
-            }) : /*#__PURE__*/ _jsxRuntime.jsxs(_rowDefault.default, {
+            }) : /*#__PURE__*/ _jsxRuntime.jsx(_rowDefault.default, {
                 className: "justify-content-md-center",
                 __source: {
                     fileName: "src/components/main-view/main-view.jsx",
                     lineNumber: 66
                 },
                 __self: this,
-                children: [
-                    "movies.map(movie => (",
-                    /*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
+                children: movies.map((movie)=>/*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
                         md: 3,
                         __source: {
                             fileName: "src/components/main-view/main-view.jsx",
@@ -22868,9 +22866,8 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __self: this
                         }, movie._id)
-                    }),
-                    "))}"
-                ]
+                    })
+                )
             })
         }));
     }
@@ -24784,7 +24781,7 @@ $RefreshReg$(_c, "LoginView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap/Form":"5ykgY","react-bootstrap/Button":"9CzHT","@parcel/transformer-js/src/esmodule-helpers.js":"4i8vm","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"hw8hz","./login-view.scss":"lS4BK"}],"5ykgY":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap/Form":"5ykgY","react-bootstrap/Button":"9CzHT","./login-view.scss":"lS4BK","@parcel/transformer-js/src/esmodule-helpers.js":"4i8vm","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"hw8hz"}],"5ykgY":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -26183,7 +26180,7 @@ const Button = /*#__PURE__*/ _react.forwardRef((_ref, ref)=>{
 Button.displayName = 'Button';
 exports.default = Button;
 
-},{"react":"6TuXu","react/jsx-runtime":"8xIwr","@parcel/transformer-js/src/esmodule-helpers.js":"4i8vm"}],"hw8hz":[function(require,module,exports) {
+},{"react":"6TuXu","react/jsx-runtime":"8xIwr","@parcel/transformer-js/src/esmodule-helpers.js":"4i8vm"}],"lS4BK":[function() {},{}],"hw8hz":[function(require,module,exports) {
 "use strict";
 var Refresh = require('react-refresh/runtime');
 function debounce(func, delay) {
@@ -26303,7 +26300,7 @@ function registerExportsForReactRefresh(module) {
     }
 }
 
-},{"react-refresh/runtime":"a9GcN"}],"lS4BK":[function() {},{}],"6EiBJ":[function(require,module,exports) {
+},{"react-refresh/runtime":"a9GcN"}],"6EiBJ":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$4249 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
