@@ -92,13 +92,13 @@ export class MainView extends React.Component {
     return (
       <Router>
         <Menubar user={user} />
-        <Container>
-          <Row className="main-view justify-content-md-center">
-            <Route exact Path="/" render={() => {
+         <Container>
+           <Row className="main-view justify-content-md-center">
+             <Route exact Path="/" render={() => {
               if (!user) return <Col>
                 <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
               </Col>
-              if (movies.length ===0) return <div className="mainview">
+              if (movies.length ===0) return <div className="mainview"/>
 
               return movies.map(m => (
                 <Col md={3} key={m._id}>
@@ -141,9 +141,9 @@ export class MainView extends React.Component {
               <UserUpdate user={user} onBackClick={() => history.goBack()}/>
               </Col>
             }} />
-        </Row>
-      </Container>
-    </Router>
+          </Row>
+        </Container>
+     </Router>
    );
  }
 }
