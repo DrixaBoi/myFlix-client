@@ -70,6 +70,12 @@ export class MainView extends React.Component {
       });
   }
 
+  setSelectedMovie(newSelectedMovie) {
+    this.setState({
+      selectedMovie: newSelectedMovie,
+    });
+  }
+
   onLoggedOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
