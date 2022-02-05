@@ -23,17 +23,20 @@ export class ProfileView extends React.Component {
   }
 
   getUserInfo(token) {
-    axios.get(`https://drixflix.herokuapp.com/users/${this.props.user}`, {
-      headers: { Authorization: `Bearer ${token}`}
+    const username = localStorage.getItem("user");
+    axios.get(`https://drixflix.herokuapp.com/users/${username}`, {
+      headers: { Authorization: `Bearer ${token}` }
     }).then(response => {
       this.setState({
-        userInfo: response.data,
-        FavoriteMovies: response.data.FavoriteMovies
+        Username: response.data.Username,
+        Favorites: this.props.movies.filter((m) =>
+          response.data.FavoriteMovies.includes(m._i)
+        ),
       });
     }).catch(function(error) {
       console.log(error);
     });
-  };
+  }
 
   onLoggedOut() {
     localStorage.removeItem('token');
@@ -49,7 +52,7 @@ export class ProfileView extends React.Component {
     console.log(username)
     const token = localStorage.getItem('token');
     console.log(this.props)
-    axios.delete(`https://myflix-by-jop.herokuapp.com/user/favorites/delete/${username}/movies/${movie._id}`,
+    axios.delete(`https://drixflix.herokuapp.com/user/favorites/delete/${username}/movies/${movie._id}`,
     { headers: { Authorization: `Bearer ${token}` } }
     )
       .then((response) => {
@@ -60,14 +63,14 @@ export class ProfileView extends React.Component {
       .catch(function (error) {
         console.log(error);
       });
-  }
+  };
 
   deleteUser() {
     const answer = window.confirm("Are you sure you want to delete your account?");
     if (answer) {
       const token = localStorage.getItem("token");
       const user = localStorage.getItem("user");
-        axios.delete( `https://myflix-by-jop.herokuapp.com/user/delete/${user}`,
+        axios.delete( `https://drixflix.herokuapp.com/user/delete/${user}`,
           { headers: { Authorization: `Bearer ${token}` } }
           )
           .then(() => {
@@ -86,7 +89,7 @@ export class ProfileView extends React.Component {
         const username = localStorage.getItem('user');
         const token = localStorage.getItem('token');
 
-        axios.put(`https://myflix-by-jop.herokuapp.com/user/update/${username}`,
+        axios.put(`https://drixflix.herokuapp.com/user/update/${username}`,
           {
             Name: this.state.Name,
             Username: this.state.Username,
@@ -113,7 +116,7 @@ export class ProfileView extends React.Component {
           })
           .catch(function (error) {
             console.log(error);
-          })
+          });
       }
 
       setName(value) {
