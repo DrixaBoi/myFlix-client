@@ -33501,6 +33501,7 @@ function Menubar({ user  }) {
                         className: "ml-auto",
                         children: [
                             isAuth() && /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Nav.Link, {
+                                variant: "link",
                                 href: `/users/${user}`,
                                 children: user
                             }, void 0, false, {
