@@ -9,16 +9,26 @@ export class ProfileView extends React.Component {
   constructor() {
     super();
     this.state = {
-      username: null,
-      password: null ,
-      email: null,
-      birthday: null,
-      favorites: [],
+      Username: null,
+      Password: null ,
+      Email: null,
+      Birthday: null,
+      Favorites: [],
     };
   }
 
   componentDidMount() {
-    this.props.getUser()
+    const accessToken = localStorage.getItem('token');
+    this.getUser(accessToken);
+  }
+
+  onLoggedOut() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.setState({
+      user:null,
+    });
+    window.open('/', '_self');
   }
 
   onRemoveFavorite = (e, movie) => {

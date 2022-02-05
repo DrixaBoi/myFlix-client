@@ -45,4 +45,4 @@ export function Menubar({user}) {
       </Container>
     </Navbar>
   );
-}  
+}
