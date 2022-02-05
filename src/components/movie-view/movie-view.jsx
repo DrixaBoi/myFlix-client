@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './movie-view.scss';
+
 export class MovieView extends React.Component {
 
   keypressCallback(event) {
@@ -29,6 +31,16 @@ export class MovieView extends React.Component {
         <div className="movie-description">
           <span className="label">Description: </span>
           <span className="value">{movie.Description}</span>
+          <Link to={`/directors/${movie.Director.Name}`}>
+            <Button variant="link">Director</Button>
+          </Link>
+        </div>
+        <div className="movie-genre">
+          <span className="label">Genre: </span>
+          <span className="value">{movie.Genre}</span>
+          <Link to={`/genres/${movie.Genre.Name}`}>
+            <Button variant="link">Genre</Button>
+          </Link>  
         </div>
         <button onClick={() => { onBackClick(null); }}>Back</button>
       </div>
