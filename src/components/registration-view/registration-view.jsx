@@ -20,7 +20,7 @@ export function RegistrationView(props) {
   });
 
   const validate = () => {
-    let iReq = true;
+    let isReq = true;
     if(!name){
       serValues({...values, nameErr: 'Name is required'});
       isReq = false;
@@ -55,7 +55,7 @@ export function RegistrationView(props) {
     e.preventDefault();
     const isReq = validate();
     if(isReq){
-      axios.post('https://drixflix.herokuapp.com/', {
+      axios.post('https://drixflix.herokuapp.com/users', {
         Name: name,
         Username: username,
         Password: password,
@@ -122,7 +122,7 @@ export function RegistrationView(props) {
 }
 
 RegistrationView.propTypes = {
-  egister: PropTypes.shape({
+  register: PropTypes.shape({
   Name: PropTypes.string.isRequired,
   Username: PropTypes.string.isRequired,
   Password: PropTypes.string.isRequired,
