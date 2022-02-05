@@ -49,7 +49,7 @@ export function RegistrationView(props) {
 
     return isReq;
   }
-}
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -119,7 +119,7 @@ export function RegistrationView(props) {
     </Row>
 
     );
-
+}
 
 RegistrationView.propTypes = {
   egister: PropTypes.shape({
