@@ -14,7 +14,6 @@ export class ProfileView extends React.Component {
       Email: null,
       Birthday: null,
       Favorites: [],
-      userInfo: [],
     };
   }
 
@@ -29,7 +28,7 @@ export class ProfileView extends React.Component {
     }).then(response => {
       this.setState({
         userInfo: response.data,
-        Favorites: response.data.FavoriteMovies
+        FavoriteMovies: response.data.FavoriteMovies
       });
     }).catch(function(error) {
       console.log(error);
