@@ -78,7 +78,7 @@ export class MainView extends React.Component {
                     <Row className="main-view justify-content-md-center">
                         <Route exact path="/" render={() => {
                             if (!user) {
-                                return <Redirect to="/" />;
+                              return <Redirect to="/login" />;
                             }
 
                             return (

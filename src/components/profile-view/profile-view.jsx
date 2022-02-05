@@ -19,8 +19,21 @@ export class ProfileView extends React.Component {
 
   componentDidMount() {
     const accessToken = localStorage.getItem('token');
-    this.getUser(accessToken);
+    this.getUserInfo(accessToken);
   }
+
+  getUserInfo(token) {
+    axios.get(`https://drixflix.herokuapp.com/users/${this.props.user}`, {
+      headers: { Authorization: `Bearer ${token}`}
+    }).then(response => {
+      this.setState({
+        userInfo: response.data,
+        FavoriteMovies: response.data.FavoriteMovies
+      });
+    }).catch(function(error) {
+      console.log(error);
+    });
+  };
 
   onLoggedOut() {
     localStorage.removeItem('token');

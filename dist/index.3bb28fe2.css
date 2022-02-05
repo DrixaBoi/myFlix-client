@@ -2,17 +2,34 @@
 * {
   border-radius: 10px;
   margin: auto;
+  margin-top: 10px;
   background-color: black;
   color: silver;
 }
 
+.movie-poster {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
 
+.label {
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+}
+
+.value {
+  display: flex;
+  justify-content: center;
+}
 
 
 
 * {
   border-radius: 10px;
   margin: auto;
+  margin-top: 10px;
   background-color: black;
   color: silver;
 }
