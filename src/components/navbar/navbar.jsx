@@ -29,10 +29,10 @@ export function Menubar({user}) {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ml-auto">
           {isAuth() && (
-            <Nav.Link variant="link" href={`/users/${user}`}>{user}</Nav.Link>
+            <Nav.Link variant="link" href={`/profile/${user}`}>{user}</Nav.Link>
           )}
           {isAuth() && (
-            <Button variant="link" onClick={() => { this.onLoggedOut() }}>Logout</Button>
+            <Button variant="link" onClick={() => { onLoggedOut(); }}>Logout</Button>
           )}
           {!isAuth() && (
             <Nav.Link href="/">Sign-in</Nav.Link>
