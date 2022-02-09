@@ -86,7 +86,7 @@ class MainView extends React.Component {
                                 <>
                                     {movies.map(movie => (
                                         <Col md={3} key={movie._id}>
-                                            <MovieCard movie={movie} onMovieClick={() => {}} />
+                                            <MoviesList movie={movie} onMovieClick={() => {}} />
                                         </Col>
                                     ))}
                                 </>
