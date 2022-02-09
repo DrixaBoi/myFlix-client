@@ -26,7 +26,7 @@ return <>
   </Col>
   {filteredMovies.map(m => (
       <Col md={3} key={m._id}>
-        <MoviesCard movie={m} />
+        <MovieCard movie={m} />
       </Col>
     ))}
   </>;
