@@ -3,22 +3,24 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { setMovies } from '../../actions/actions';
+import MoviesList from '../movies-list/movies-list';
 import {Container, Row, Col, Button } from 'react-bootstrap';
 import { Menubar } from '../navbar/navbar';
 import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
-import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
 import { ProfileView } from '../profile-view/profile-view';
 import './main-view.scss';
 
-export class MainView extends React.Component {
+class MainView extends React.Component {
+
   constructor(){
     super();
     this.state = {
-      movies: [],
       selectedMovie: null,
       user: null
     };
@@ -59,9 +61,7 @@ export class MainView extends React.Component {
     })
     .then(response => {
       //assign result to state
-      this.setState({
-        movies: response.data
-      });
+      this.props.setMovies(response.data);
     })
     .catch(function (error) {
       console.log(error);
@@ -69,7 +69,8 @@ export class MainView extends React.Component {
   }
 
     render() {
-        const { movies, user } = this.state;
+        let { movies } = this.props;
+        let { user } = this.state;
 
         return (
             <Router>
@@ -124,9 +125,8 @@ export class MainView extends React.Component {
 
                             return (
                                 <Col md={8}>
-                                    <MovieView
-                                        movie={movies.find(m => m._id === match.params.movieId)}
-                                        onBackClick={() => history.goBack()} />
+                                    <MoviesList movies={movies}
+                                    onBackClick={() => history.goBack()} />
                                 </Col>
                             );
                         }} />
@@ -194,3 +194,9 @@ export class MainView extends React.Component {
         );
     }
 }
+
+let mapStateToProps = state => {
+  return { movies: state.movies }
+}
+
+export default connect(mapStateToProps, { setMovies } )(MainView);
