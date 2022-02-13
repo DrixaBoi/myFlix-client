@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import axios from 'axios';
 import {Row, Col, Button, Container, Form } from 'react-bootstrap';
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 import './registration-view.scss';
 

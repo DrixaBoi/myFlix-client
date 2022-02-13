@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Button, Card, Col, Form, Row, Container } from 'react-bootstrap';
 import { MovieCard } from '../movie-card/movie-card';
 import './profile-view.scss';
+import { connect } from "react-redux";
 
 export class ProfileView extends React.Component {
 
