@@ -48,6 +48,7 @@ const validate = () => {
     })
     .catch(e => {
       console.log('No such user')
+      alert("User not found");
     });
  };
 
