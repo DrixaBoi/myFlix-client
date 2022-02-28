@@ -26759,9 +26759,9 @@ class MainView extends _reactDefault.default.Component {
                                     }, void 0, false, void 0, void 0));
                                     return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Col, {
                                         md: 8,
-                                        children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_moviesListDefault.default, {
-                                            movies: movies,
-                                            onBackClick: ()=>history.goBack()
+                                        children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_movieView.MovieView, {
+                                            movie: movies.find((m)=>m._id === match.params.movieId
+                                            )
                                         }, void 0, false, void 0, void 0)
                                     }, void 0, false, void 0, void 0));
                                 }
@@ -26788,7 +26788,7 @@ class MainView extends _reactDefault.default.Component {
                                 }
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 133,
+                                lineNumber: 134,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Route, {
@@ -26816,7 +26816,7 @@ class MainView extends _reactDefault.default.Component {
                                 }
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 148,
+                                lineNumber: 149,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Route, {
@@ -26844,7 +26844,7 @@ class MainView extends _reactDefault.default.Component {
                                 }
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 171,
+                                lineNumber: 172,
                                 columnNumber: 25
                             }, this)
                         ]
@@ -30699,16 +30699,17 @@ const mapStateToProps = (state)=>{
     };
 };
 function MoviesList(props) {
-    const { movies , visibilityFilter  } = props;
-    let filteredMovies = movies;
-    if (visibilityFilter !== '') filteredMovies = movies.filter((m)=>m.Title.toLowerCase().includes(visibilityFilter.toLowerCase())
-    );
-    if (!movies) return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
+    const { movie , visibilityFilter  } = props;
+    let filteredMovies = movie;
+    // if (visibilityFilter !== '') {
+    //   filteredMovies = movie.filter(m => m.Title.toLowerCase().includes(visibilityFilter.toLowerCase()));
+    // }
+    if (!movie) return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
         className: "main-view"
     }, void 0, false, {
         fileName: "src/components/movies-list/movies-list.jsx",
-        lineNumber: 21,
-        columnNumber: 23
+        lineNumber: 22,
+        columnNumber: 22
     }, this));
     return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_jsxDevRuntime.Fragment, {
         children: [
@@ -30721,29 +30722,28 @@ function MoviesList(props) {
                     visibilityFilter: visibilityFilter
                 }, void 0, false, {
                     fileName: "src/components/movies-list/movies-list.jsx",
-                    lineNumber: 25,
+                    lineNumber: 26,
                     columnNumber: 5
                 }, this)
             }, void 0, false, {
                 fileName: "src/components/movies-list/movies-list.jsx",
-                lineNumber: 24,
+                lineNumber: 25,
                 columnNumber: 3
             }, this),
-            filteredMovies.map((m)=>/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_colDefault.default, {
-                    md: 3,
-                    children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_movieCard.MovieCard, {
-                        movie: m
-                    }, void 0, false, {
-                        fileName: "src/components/movies-list/movies-list.jsx",
-                        lineNumber: 29,
-                        columnNumber: 9
-                    }, this)
-                }, m._id, false, {
+            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_colDefault.default, {
+                md: 3,
+                children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_movieCard.MovieCard, {
+                    movie: movie
+                }, void 0, false, {
                     fileName: "src/components/movies-list/movies-list.jsx",
-                    lineNumber: 28,
-                    columnNumber: 7
+                    lineNumber: 29,
+                    columnNumber: 9
                 }, this)
-            )
+            }, movie._id, false, {
+                fileName: "src/components/movies-list/movies-list.jsx",
+                lineNumber: 28,
+                columnNumber: 3
+            }, this)
         ]
     }, void 0, true));
 }
