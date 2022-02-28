@@ -54,7 +54,7 @@ export class MovieView extends React.Component {
                     <Button variant="link"><span>{movie.Genre.Name}</span></Button>
                   </Link>
                 </div>
-                <Button variant="outline-primary" onClick={() => onBackClick(null)}>Back</Button>
+                <Button variant="outline-primary" onClick={() => { onBackClick(null); }}>Back</Button>
               </div>
             </Col>
           </Row>

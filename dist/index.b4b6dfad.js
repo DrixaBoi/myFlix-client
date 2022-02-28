@@ -26759,11 +26759,17 @@ class MainView extends _reactDefault.default.Component {
                                     }, void 0, false, void 0, void 0));
                                     return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Col, {
                                         md: 8,
-                                        children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_movieView.MovieView, {
-                                            movie: movies.find((m)=>m._id === match.params.movieId
-                                            )
-                                        }, void 0, false, void 0, void 0)
-                                    }, void 0, false, void 0, void 0));
+                                        children: [
+                                            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_movieView.MovieView, {
+                                                movie: movies.find((m)=>m._id === match.params.movieId
+                                                )
+                                            }, void 0, false, void 0, void 0),
+                                            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_moviesListDefault.default, {
+                                                movies: movies,
+                                                onBackClick: ()=>history.goBack()
+                                            }, void 0, false, void 0, void 0)
+                                        ]
+                                    }, void 0, true, void 0, void 0));
                                 }
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
@@ -30700,7 +30706,7 @@ const mapStateToProps = (state)=>{
 };
 function MoviesList(props) {
     const { movie , visibilityFilter  } = props;
-    let filteredMovies = movie;
+    //let filteredMovies = movie;
     // if (visibilityFilter !== '') {
     //   filteredMovies = movie.filter(m => m.Title.toLowerCase().includes(visibilityFilter.toLowerCase()));
     // }
@@ -31563,7 +31569,26 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "MovieCard", ()=>MovieCard
-);
+) // MovieCard.propTypes = {
+ //   movie: PropTypes.shape({
+ //     Title: PropTypes.string.isRequired,
+ //     Description: PropTypes.string.isRequired,
+ //     Director: PropTypes.shape({
+ //       Name: PropTypes.string.isRequired,
+ //       Bio: PropTypes.string.isRequired,
+ //       Birth: PropTypes.string.isRequired,
+ //       Death:PropTypes.string.isRequired,
+ //     }).isRequired,
+ //     Genre: PropTypes.shape({
+ //       Name: PropTypes.string.isRequired,
+ //       Description: PropTypes.string.isRequired,
+ //     }).isRequired,
+ //     Actors: PropTypes.string.isRequired,
+ //     Imagepath: PropTypes.string.isRequired
+ //   }).isRequired,
+ //   onMovieClick: PropTypes.func.isRequired
+ // };
+;
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
@@ -31635,25 +31660,6 @@ class MovieCard extends _reactDefault.default.Component {
         }, this));
     }
 }
-MovieCard.propTypes = {
-    movie: _propTypesDefault.default.shape({
-        Title: _propTypesDefault.default.string.isRequired,
-        Description: _propTypesDefault.default.string.isRequired,
-        Director: _propTypesDefault.default.shape({
-            Name: _propTypesDefault.default.string.isRequired,
-            Bio: _propTypesDefault.default.string.isRequired,
-            Birth: _propTypesDefault.default.string.isRequired,
-            Death: _propTypesDefault.default.string.isRequired
-        }).isRequired,
-        Genre: _propTypesDefault.default.shape({
-            Name: _propTypesDefault.default.string.isRequired,
-            Description: _propTypesDefault.default.string.isRequired
-        }).isRequired,
-        Actors: _propTypesDefault.default.string.isRequired,
-        Imagepath: _propTypesDefault.default.string.isRequired
-    }).isRequired,
-    onMovieClick: _propTypesDefault.default.func.isRequired
-};
 
   $parcel$ReactRefreshHelpers$67b2.postlude(module);
 } finally {
@@ -36681,8 +36687,9 @@ class MovieView extends _reactDefault.default.Component {
                             }, this),
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Button, {
                                 variant: "outline-primary",
-                                onClick: ()=>onBackClick(null)
-                                ,
+                                onClick: ()=>{
+                                    onBackClick(null);
+                                },
                                 children: "Back"
                             }, void 0, false, {
                                 fileName: "src/components/movie-view/movie-view.jsx",

@@ -126,8 +126,8 @@ class MainView extends React.Component {
                             return (
                                 <Col md={8}>
                                     <MovieView movie={movies.find((m) => m._id === match.params.movieId)} ></MovieView>
-                                    {/* <MoviesList movies={movies}
-                                    onBackClick={() => history.goBack()} /> */}
+                                    <MoviesList movies={movies}
+                                    onBackClick={() => history.goBack()} />
                                 </Col>
                             );
                         }} />
