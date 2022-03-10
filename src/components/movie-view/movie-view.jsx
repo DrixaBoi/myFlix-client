@@ -7,20 +7,77 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 
 export class MovieView extends React.Component {
 
-  keypressCallback(event) {
-    console.log(event.key);
-  }
+  constructor(props) {
+    super(props);
 
-  componentDidMount() {
-    document.addEventListener('keypress', this.keypressCallback);
-  }
+    this.state = {
 
-  componentWillUnmount() {
-    document.removeEventListener('keypress', this.keypressCallback);
-  }
+        FavoriteMovies: [],
+        userDetails: []
+    }
+
+
+    this.addFavorite = this.addFavorite.bind(this);
+    this.removeFavorite = this.removeFavorite.bind(this);
+}
+
+
+componentDidMount() {
+    let accessToken = localStorage.getItem('token');
+    this.getUserDetails(accessToken);
+}
+
+
+getUserDetails(token) {
+    axios.get(`https://drixflix.herokuapp.com/users/${this.props.user}`, {
+        headers: { Authorization: `Bearer ${token}`}
+    }).then(response => {
+
+        this.setState({
+            userDetails: response.data,
+            FavoriteMovies: response.data.FavoriteMovies
+        });
+    }).catch(function(error) {
+        console.log(error);
+    });
+}
+
+
+addFavorite() {
+    let token = localStorage.getItem('token');
+
+    axios.post(`https://drixflix.herokuapp.com/users/${this.props.user}/movies/${this.props.movie._id}`, {}, {
+        headers: { Authorization: `Bearer ${token}` }
+    }).then(response => {
+
+        window.open(`/movies/${this.props.movie._id}`, '_self');
+    }).catch(function(error) {
+        console.log(error);
+    });
+}
+
+
+removeFavorite() {
+    let token = localStorage.getItem('token');
+    axios.delete(`https://drixflix.herokuapp.com/users/${this.props.user}/movies/${this.props.movie._id}`, {
+        headers: { Authorization: `Bearer ${token}` }
+    }).then(response => {
+
+        window.open(`/movies/${this.props.movie._id}`, '_self');
+    }).catch(function(error) {
+        console.log(error);
+    });
+}
 
   render() {
     const { movie, onBackClick } = this.props;
+    let tempArray = this.state.FavoriteMovies;
+    let isFavoriteNew = false
+    if (tempArray.includes(this.props.movie._id)) {
+        isFavoriteNew = true;
+    } else {
+        isFavoriteNew = false;
+    };
 
     return (
       <Container className="movieContainer">
@@ -38,10 +95,6 @@ export class MovieView extends React.Component {
                   <span className="label">Description: </span>
                   <span className="value">{movie.Description}</span>
                 </div>
-                <div className="movie-actors">
-                  <span className="label">Actors: </span>
-                  <span className="value">{movie.Actors}</span>
-                </div>
                 <div className="movie-director">
                   <span className="label-button">Director: </span>
                   <Link to={`/directors/${movie.Director.Name}`}>
@@ -55,6 +108,16 @@ export class MovieView extends React.Component {
                   </Link>
                 </div>
                 <Button variant="outline-primary" onClick={() => { onBackClick(null); }}>Back</Button>
+                {isFavoriteNew ? (
+                  <Button className="float-right" variant="outline-primary" onClick={this.removeFavorite}>
+                     Remove from Favorites
+                  </Button>
+                     ) : 
+                     (
+                  <Button className="float-right" variant="outline-primary" onClick={this.addFavorite}>
+                     Add to Favorites
+                  </Button>
+                )}
               </div>
             </Col>
           </Row>
