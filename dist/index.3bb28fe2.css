@@ -22,16 +22,63 @@
   display: flex;
   justify-content: center;
 }
-
-
-
-
 * {
   border-radius: 10px;
   margin: auto;
   margin-top: 10px;
   background-color: black;
   color: silver;
+}
+
+.card {
+  max-width: 300px;
+}
+* {
+  border-radius: 10px;
+  margin: auto;
+  margin-top: 10px;
+  background-color: black;
+  color: silver;
+}
+.movie-card-body {
+  margin: 0px;
+}
+
+.movie-card {
+  max-width: 200px;
+}
+
+.card-text {
+  width: 350px;
+}
+.profile-button {
+  margin: 20px;
+}
+
+.card-text {
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  margin: 5px;
+  padding-bottom: 10px;
+  max-width: 540px;
+}
+.movie-card {
+  margin: auto;
+}
+
+.movie-img {
+  display: flex;
+  justify-content: center;
+  margin: 5px auto;
+  padding: 10px;
+}
+.movie-cards {
+  margin: 20px;
+  max-width: 300px;
 }
 .my-flix {
   color: steelblue;

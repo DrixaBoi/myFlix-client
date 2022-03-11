@@ -1,7 +1,10 @@
-* {
-  border-radius: 10px;
+.movie-card {
   margin: auto;
-  margin-top: 10px;
-  background-color: black;
-  color: silver;
+}
+
+.movie-img {
+  display: flex;
+  justify-content: center;
+  margin: 5px auto;
+  padding: 10px;
 }

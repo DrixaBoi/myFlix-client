@@ -128,10 +128,12 @@ render() {
                 </Modal.Footer>
             </Modal>
 
-            <Card bg="secondary" text="light" border="light">
-                <Card.Body>
-                    <Card.Title className="text-center">Profile of {this.state.userDetails.Username}</Card.Title>
+            <Card id="card-top" className="card" bg="dark" text="light">
+                <Card.Body className="card-top">
+                    <Card.Title className="card-text">Welcome to your Personal Profile.</Card.Title>
+                    <Card.Text><span className="profile_heading">User Name: </span>{this.state.userDetails.username}</Card.Text>
                     <Card.Text><span className="profile_heading">Email: </span>{this.state.userDetails.email}</Card.Text>
+                    <Card.Text><span className="profile_heading">Birthday: </span>{this.state.userDetails.birthday}</Card.Text>
 
                     {this.state.userDetails.Birthdate && (
                         <Card.Text><span className="profile_heading">Date of Birth: </span>{Intl.DateTimeFormat().format(new Date(this.state.userDetails.Birthdate))}</Card.Text>
@@ -139,9 +141,9 @@ render() {
                 </Card.Body>
             </Card>
 
-            <Card bg="secondary" text="light" border="light">
-                <Card.Body>
-                    <Card.Title className="text-center">Update Profile Details</Card.Title>
+            <Card className="card" bg="dark" text="light">
+                <Card.Body className="card-body">
+                    <Card.Title className="text-center">Change or Update Profile Information</Card.Title>
 
                     <Form noValidate validated={this.state.validated}>
                         <Form.Group controlId="updateFormUsername">
@@ -170,21 +172,21 @@ render() {
                         </Form.Group>
 
 
-                        <Button variant="light" style={{ color: "white" }} type="submit" onClick={this.updateUserDetails}>
+                        <Button className="profile-button" variant="outline-primary" type="submit" onClick={this.updateUserDetails}>
                             Update Details
                         </Button>
 
-                        <Button onClick={() => onBackClick(null)} variant="light" style={{ color: "white" }}>Back</Button>
+                        <Button className="profile-button" onClick={() => onBackClick(null)} variant="outline-primary">Back</Button>
 
-                        <Button className="float-right" variant="light" style={{ color: "white" }} onClick={this.showModal}>
+                        <Button className="profile-button" variant="outline-primary" onClick={this.showModal}>
                             Delete User Profile
                         </Button>
                     </Form>
                 </Card.Body>
             </Card>
 
-            <Card bg="secondary" text="light" border="light" align="center" style={{ color: "white" }}>
-                <Card.Title>{this.state.userDetails.Username}'s Favorites:</Card.Title>
+            <Card className="card" bg="dark" text="light" align="center" style={{ color: "white" }}>
+                <Card.Title className="card-text">Favorite Movies:</Card.Title>
             <Row>
 
                 {FavoriteMoviesArray.map(movie => (

@@ -13,9 +13,9 @@ export class GenreView extends React.Component {
 
      return (
         <Container>
-          <Card>
+          <Card bg="dark">
             <Card.Body>
-                <Card.Title>Genre</Card.Title>
+                <Card.Title align="center">Genre</Card.Title>
                 <Card.Text>
                   <span className="label">Name: </span>
                   <span className="value">{genre.Name}</span>
@@ -30,7 +30,7 @@ export class GenreView extends React.Component {
           </Card>  
           <Row>
             {movies.map(movie => (
-              <Card key={movie._id} >
+              <Card bg="dark" key={movie._id} >
                 <Card.Img
                   className="favorite-poster"
                   variant="top"

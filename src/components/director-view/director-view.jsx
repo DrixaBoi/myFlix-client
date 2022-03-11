@@ -12,7 +12,7 @@ export class DirectorView extends React.Component {
 
         return (
             <Container>
-                <Card>
+                <Card bg="dark">
                     <Card.Body>
                         <Card.Title>Director</Card.Title>
                         <Card.Text>
@@ -37,7 +37,7 @@ export class DirectorView extends React.Component {
                 </Card>
                 <Row>
                     {movies.map(movie => (
-                        <Card key={movie._id} >
+                        <Card bg="dark" align="center" key={movie._id} >
                             <Card.Img
                                 className="fav-poster"
                                 variant="top"
