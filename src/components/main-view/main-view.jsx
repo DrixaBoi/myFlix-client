@@ -29,7 +29,8 @@ class MainView extends React.Component {
   componentDidMount() {
     let accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
-      this.setState({
+      console.log(localStorage)
+        this.setState({
         user: localStorage.getItem('user')
       });
       this.getMovies(accessToken);
@@ -126,7 +127,7 @@ class MainView extends React.Component {
 
                             return (
                                 <Col md={8}>
-                                    <MovieView movie={movies.find((m) => m._id === match.params.movieId)} ></MovieView>
+                                    <MovieView movie={movies.find((m) => m._id === match.params.movieId)} onBackClick={() => history.goBack()} ></MovieView>
                                     <MoviesList movies={movies}
                                     onBackClick={() => history.goBack()} />
                                 </Col>
@@ -143,7 +144,7 @@ class MainView extends React.Component {
 
                             return (
                                 <Col md={8}>
-                                    <ProfileView movies={movies} onBackClick={() => history.goBack()} />
+                                    <ProfileView movies={movies} user={user} onBackClick={() => history.goBack()} />
                                 </Col>
                             );
                         }} />
